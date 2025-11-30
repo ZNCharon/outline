@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9f2463782c458804a714224cb1c2f317a1f4a08669c1cfbac129c1d40f1b6a67
-size 353
+services:
+  redis:
+    image: redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    user: "redis:redis"
+  postgres:
+    image: postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: outline
+    user: "postgres:postgres"
+  outline:
+    image: outlinewiki/outline:0.83.0
