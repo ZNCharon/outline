@@ -83,3 +83,11 @@ services:
     volumes:
       - ./data/uploads:/var/lib/outline/uploads
 
+
+错误修改：
+修改.env文件：AUTH_PROVIDER=local # 启用本地账户登录（Outline 默认可能禁用）
+             COOKIE_SECURE=false # 否则浏览器不会在 HTTP 下发送 cookie
+检查日志：docker-compose logs server
+         docker-compose logs web
+         查看是否有 CORS、proxy 或路由错误。
+
